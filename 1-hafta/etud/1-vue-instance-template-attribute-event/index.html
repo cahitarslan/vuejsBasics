@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="app.js" defer></script>
+        <style>
+            .box {
+                width: 200px;
+                height: 200px;
+                border: 2px dashed #c5161c;
+                background-color: #ccc;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Bu HTML üzerinden yazılan statik bir başlıktır</h1>
+            <h1>{{ title }}</h1>
+            <p>{{ content }}</p>
+            <p>{{ hobbies[0] }}</p>
+            <p>{{ personel.name }}</p>
+            <div v-html="details"></div>
+            <a v-bind:href="url" :masa="masa">URL Test</a>
+            <a :href="url" v-bind:masa="masa">URL Test</a>
+            <br /><br />
+            <button v-on:click="updateTitle('Bu da başlığı değiştirir')">Tıkla ve Title Bilgisini Değiştir...</button>
+            <button @click="updateTitle('Kardeşim bu benim parametrem..')">Tıkla ve Title Bilgisini Değiştir...</button>
+            <br />
+            <br />
+            <div @mousemove="updateCoords" class="box" @click="updateTitle('Diz üzerinden gelen mesaj')">{{ coordX }} , {{ coordY }}</div>
+            <br />
+            <input type="text" :value="fullName" @input="fullName = $event.target.value" />
+            <input type="text" v-model="fullName" />
+            {{fullName}}
+        </div>
+        <!-- @input="updateValue('bu benim text', $event)"  -->
+    </body>
+</html>
